@@ -44,6 +44,9 @@ static void sdram_gpio_config(void)
     rcu_periph_clock_enable(RCU_EXMC);
 
     /* All SDRAM pins: AF, push-pull, no pull. */
+    gpio_af_set(GPIOD, af, GPIO_PIN_0 | GPIO_PIN_1 |
+                         GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 |
+                         GPIO_PIN_14 | GPIO_PIN_15);
     gpio_af_set(GPIOE, af, GPIO_PIN_0 | GPIO_PIN_1 |
                          GPIO_PIN_7 | GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 |
                          GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 |
