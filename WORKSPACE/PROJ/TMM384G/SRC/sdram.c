@@ -37,7 +37,8 @@ static void sdram_gpio_config(void)
     const uint32_t af = GPIO_AF_12;
     const uint32_t speed = GPIO_OSPEED_100_220MHZ;
 
-    rcu_periph_clock_enable(RCU_GPIOD);\n    rcu_periph_clock_enable(RCU_GPIOE);
+    rcu_periph_clock_enable(RCU_GPIOD);
+    rcu_periph_clock_enable(RCU_GPIOE);
     rcu_periph_clock_enable(RCU_GPIOF);
     rcu_periph_clock_enable(RCU_GPIOG);
     rcu_periph_clock_enable(RCU_GPIOH);
