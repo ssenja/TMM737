@@ -121,6 +121,58 @@ int main(void)
         }
     }
 
+    /* SDRAM address-bus walking diagnostic. */
+    {
+        uint32_t addr;
+        uint32_t other;
+        uint32_t failures = 0U;
+        uint16_t base_read;
+        uint16_t test_read;
+
+        printf("\r\n=== SDRAM ADDRESS BUS TEST ===\r\n");
+
+        /* Byte offsets 2,4,8... exercise every usable address bit. */
+        for(addr = 2U; addr < SDRAM_SIZE_BYTES; addr <<= 1U) {
+            sdram_write16(0U, 0xAAAAU);
+            for(other = 2U; other < SDRAM_SIZE_BYTES; other <<= 1U) {
+                sdram_write16(other, 0xAAAAU);
+            }
+
+            sdram_write16(addr, 0x5555U);
+            __DSB();
+
+            base_read = sdram_read16(0U);
+            test_read = sdram_read16(addr);
+
+            if((base_read != 0xAAAAU) || (test_read != 0x5555U)) {
+                printf("ADDR 0x%08lX : FAIL BASE=%04X TEST=%04X\r\n",
+                       (unsigned long)addr,
+                       (unsigned int)base_read,
+                       (unsigned int)test_read);
+                ++failures;
+            } else {
+                printf("ADDR 0x%08lX : OK\r\n", (unsigned long)addr);
+            }
+
+            for(other = 2U; other < SDRAM_SIZE_BYTES; other <<= 1U) {
+                if(other != addr) {
+                    uint16_t v = sdram_read16(other);
+                    if(v != 0xAAAAU) {
+                        printf("  ALIAS -> 0x%08lX READ=%04X\r\n",
+                               (unsigned long)other, (unsigned int)v);
+                        ++failures;
+                        break;
+                    }
+                }
+            }
+        }
+
+        printf("ADDRESS BUS RESULT : %s (%lu)\r\n",
+               (failures == 0U) ? "PASS" : "FAIL",
+               (unsigned long)failures);
+        printf("==============================\r\n");
+    }
+
     /* One-shot SDRAM read/write verification.
        0 = PASS, non-zero = failing byte address + 1. */
     printf("SDRAM test start...\r\n");
