@@ -42,7 +42,7 @@ OF SUCH DAMAGE.
 
 void cache_enable(void);
 void mpu_config(void);
-static void dbg_uart_init(void);
+static void dbg_uart_init(void);\nstatic uint32_t gpio_af_read(uint32_t gpio_periph, uint32_t pin);\nstatic void sdram_register_dump(void);\nstatic void sdram_base_stability_test(void);
 
 #define DBG_UART_BAUDRATE    115200U
 #define DBG_UART             USART1
@@ -233,6 +233,54 @@ int main(void)
     \param[out] none
     \retval     none
 */
+static uint32_t gpio_af_read(uint32_t gpio_periph, uint32_t pin)
+{
+    uint32_t index, shift;
+    for(index=0U; index<16U; ++index) {
+        if(pin==(1UL<<index)) {
+            if(index<8U) { shift=index*4U; return (GPIO_AFSEL0(gpio_periph)>>shift)&0xFU; }
+            shift=(index-8U)*4U; return (GPIO_AFSEL1(gpio_periph)>>shift)&0xFU;
+        }
+    }
+    return 0xFFFFFFFFU;
+}
+
+static void sdram_register_dump(void)
+{
+    static const uint32_t pf_pin[]={GPIO_PIN_0,GPIO_PIN_1,GPIO_PIN_2,GPIO_PIN_3,GPIO_PIN_4,GPIO_PIN_5,GPIO_PIN_12,GPIO_PIN_13,GPIO_PIN_14,GPIO_PIN_15};
+    static const uint32_t pf_num[]={0U,1U,2U,3U,4U,5U,12U,13U,14U,15U};
+    uint32_t i;
+    printf("\r\n=== EXMC REGISTER DUMP ===\r\n");
+    printf("SDCTL0 = 0x%08lX\r\n",(unsigned long)EXMC_SDCTL0);
+    printf("SDTCFG0= 0x%08lX\r\n",(unsigned long)EXMC_SDTCFG0);
+    printf("SDCMD  = 0x%08lX\r\n",(unsigned long)EXMC_SDCMD);
+    printf("SDARI  = 0x%08lX\r\n",(unsigned long)EXMC_SDARI);
+    printf("SDSTAT = 0x%08lX\r\n",(unsigned long)EXMC_SDSTAT);
+    printf("SDRSCTL= 0x%08lX\r\n",(unsigned long)EXMC_SDRSCTL);
+    printf("\r\n=== GPIO AF CHECK ===\r\n");
+    for(i=0U;i<10U;++i) printf("A%lu PF%lu AF=%lu\r\n",(unsigned long)i,(unsigned long)pf_num[i],(unsigned long)gpio_af_read(GPIOF,pf_pin[i]));
+    printf("A10 PG0 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_0));
+    printf("A11 PG1 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_1));
+    printf("A12 PG2 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_2));
+    printf("BA0 PG4 AF=%lu BA1 PG5 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_4),(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_5));
+    printf("RAS PF11 AF=%lu CAS PG15 AF=%lu WE PH5 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOF,GPIO_PIN_11),(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_15),(unsigned long)gpio_af_read(GPIOH,GPIO_PIN_5));
+    printf("CS PH3 AF=%lu CKE PH2 AF=%lu CLK PG8 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOH,GPIO_PIN_3),(unsigned long)gpio_af_read(GPIOH,GPIO_PIN_2),(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_8));
+}
+
+static void sdram_base_stability_test(void)
+{
+    uint32_t i, failures=0U;
+    uint16_t value;
+    printf("\r\n=== SDRAM BASE STABILITY TEST ===\r\n");
+    for(i=0U;i<16U;++i) {
+        sdram_write16(0U,0x0000U); __DSB();
+        value=sdram_read16(0U); __DSB();
+        printf("%02lu WRITE=0000 READ=%04X : %s\r\n",(unsigned long)i,(unsigned int)value,(value==0U)?"OK":"FAIL");
+        if(value!=0U) ++failures;
+    }
+    printf("BASE STABILITY RESULT : %s (%lu/16 FAIL)\r\n",(failures==0U)?"PASS":"FAIL",(unsigned long)failures);
+}
+
 static void dbg_uart_init(void)
 {
     rcu_periph_clock_enable(RCU_GPIOD);
