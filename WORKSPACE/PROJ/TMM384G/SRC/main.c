@@ -121,56 +121,88 @@ int main(void)
         }
     }
 
-    /* SDRAM address-bus walking diagnostic. */
+    /*
+     * SDRAM geometry diagnostic for MT48LC16M16A2:
+     * 512 columns x 8192 rows x 4 banks x 16 bits.
+     * CPU byte offsets for a 16-bit SDRAM:
+     *   column A0..A8 : 2^(1..9)
+     *   row    A0..A12: 2^(10..22)
+     *   bank   BA0..BA1: 2^(23..24)
+     *
+     * Each bit is tested independently against offset 0 so a failing/aliased
+     * address cannot contaminate the following test.
+     */
     {
-        uint32_t addr;
-        uint32_t other;
+        uint32_t bit;
+        uint32_t offset;
         uint32_t failures = 0U;
         uint16_t base_read;
-        uint16_t test_read;
+        uint16_t target_read;
+        const char *group;
+        uint32_t signal;
 
-        printf("\r\n=== SDRAM ADDRESS BUS TEST ===\r\n");
+        printf("\r\n=== SDRAM GEOMETRY ADDRESS TEST ===\r\n");
 
-        /* Byte offsets 2,4,8... exercise every usable address bit. */
-        for(addr = 2U; addr < SDRAM_SIZE_BYTES; addr <<= 1U) {
-            sdram_write16(0U, 0xAAAAU);
-            for(other = 2U; other < SDRAM_SIZE_BYTES; other <<= 1U) {
-                sdram_write16(other, 0xAAAAU);
+        for(bit = 1U; bit <= 24U; ++bit) {
+            offset = (1UL << bit);
+
+            if(bit <= 9U) {
+                group = "COLUMN A";
+                signal = bit - 1U;
+            } else if(bit <= 22U) {
+                group = "ROW A";
+                signal = bit - 10U;
+            } else {
+                group = "BANK BA";
+                signal = bit - 23U;
             }
 
-            sdram_write16(addr, 0x5555U);
+            /*
+             * First prove base and target can hold opposite values.
+             * Restore both locations after every bit test.
+             */
+            sdram_write16(0U, 0xAAAAU);
+            sdram_write16(offset, 0x5555U);
             __DSB();
 
             base_read = sdram_read16(0U);
-            test_read = sdram_read16(addr);
+            target_read = sdram_read16(offset);
+            __DSB();
 
-            if((base_read != 0xAAAAU) || (test_read != 0x5555U)) {
-                printf("ADDR 0x%08lX : FAIL BASE=%04X TEST=%04X\r\n",
-                       (unsigned long)addr,
-                       (unsigned int)base_read,
-                       (unsigned int)test_read);
-                ++failures;
+            if((base_read == 0xAAAAU) && (target_read == 0x5555U)) {
+                printf("%s%lu OFFSET=0x%08lX : PASS\r\n",
+                       group, (unsigned long)signal, (unsigned long)offset);
             } else {
-                printf("ADDR 0x%08lX : OK\r\n", (unsigned long)addr);
+                printf("%s%lu OFFSET=0x%08lX : FAIL BASE=%04X TARGET=%04X\r\n",
+                       group, (unsigned long)signal, (unsigned long)offset,
+                       (unsigned int)base_read, (unsigned int)target_read);
+                ++failures;
             }
 
-            for(other = 2U; other < SDRAM_SIZE_BYTES; other <<= 1U) {
-                if(other != addr) {
-                    uint16_t v = sdram_read16(other);
-                    if(v != 0xAAAAU) {
-                        printf("  ALIAS -> 0x%08lX READ=%04X\r\n",
-                               (unsigned long)other, (unsigned int)v);
-                        ++failures;
-                        break;
-                    }
-                }
+            /* Reverse the patterns to catch stuck-high/stuck-low aliasing. */
+            sdram_write16(0U, 0x5555U);
+            sdram_write16(offset, 0xAAAAU);
+            __DSB();
+
+            base_read = sdram_read16(0U);
+            target_read = sdram_read16(offset);
+            __DSB();
+
+            if((base_read != 0x5555U) || (target_read != 0xAAAAU)) {
+                printf("  REVERSE : FAIL BASE=%04X TARGET=%04X\r\n",
+                       (unsigned int)base_read, (unsigned int)target_read);
+                ++failures;
             }
+
+            sdram_write16(0U, 0x0000U);
+            sdram_write16(offset, 0x0000U);
+            __DSB();
         }
 
-        printf("ADDRESS BUS RESULT : %s (%lu)\r\n",
+        printf("GEOMETRY ADDRESS RESULT : %s (%lu)\r\n",
                (failures == 0U) ? "PASS" : "FAIL",
                (unsigned long)failures);
-        printf("==============================\r\n");
+        printf("===================================\r\n");
     }
 
     /* One-shot SDRAM read/write verification.
