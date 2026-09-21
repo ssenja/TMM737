@@ -37,7 +37,7 @@ static void sdram_gpio_config(void)
     const uint32_t af = GPIO_AF_12;
     const uint32_t speed = GPIO_OSPEED_100_220MHZ;
 
-    rcu_periph_clock_enable(RCU_GPIOE);
+    rcu_periph_clock_enable(RCU_GPIOD);\n    rcu_periph_clock_enable(RCU_GPIOE);
     rcu_periph_clock_enable(RCU_GPIOF);
     rcu_periph_clock_enable(RCU_GPIOG);
     rcu_periph_clock_enable(RCU_GPIOH);
@@ -56,6 +56,10 @@ static void sdram_gpio_config(void)
                          GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_8 | GPIO_PIN_15);
     gpio_af_set(GPIOH, af, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_5);
 
+    gpio_mode_set(GPIOD, GPIO_MODE_AF, GPIO_PUPD_NONE,
+                  GPIO_PIN_0 | GPIO_PIN_1 |
+                  GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 |
+                  GPIO_PIN_14 | GPIO_PIN_15);
     gpio_mode_set(GPIOE, GPIO_MODE_AF, GPIO_PUPD_NONE,
                   GPIO_PIN_0 | GPIO_PIN_1 |
                   GPIO_PIN_7 | GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 |
@@ -72,6 +76,10 @@ static void sdram_gpio_config(void)
     gpio_mode_set(GPIOH, GPIO_MODE_AF, GPIO_PUPD_NONE,
                   GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_5);
 
+    gpio_output_options_set(GPIOD, GPIO_OTYPE_PP, speed,
+                            GPIO_PIN_0 | GPIO_PIN_1 |
+                            GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 |
+                            GPIO_PIN_14 | GPIO_PIN_15);
     gpio_output_options_set(GPIOE, GPIO_OTYPE_PP, speed,
                             GPIO_PIN_0 | GPIO_PIN_1 |
                             GPIO_PIN_7 | GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 |
