@@ -42,7 +42,10 @@ OF SUCH DAMAGE.
 
 void cache_enable(void);
 void mpu_config(void);
-static void dbg_uart_init(void);\nstatic uint32_t gpio_af_read(uint32_t gpio_periph, uint32_t pin);\nstatic void sdram_register_dump(void);\nstatic void sdram_base_stability_test(void);
+static void dbg_uart_init(void);
+static uint32_t gpio_af_read(uint32_t gpio_periph, uint32_t pin);
+static void sdram_register_dump(void);
+static void sdram_base_stability_test(void);
 
 #define DBG_UART_BAUDRATE    115200U
 #define DBG_UART             USART1
@@ -89,6 +92,9 @@ int main(void)
     printf("\r\nCK_AHB is %d", rcu_clock_freq_get(CK_AHB));
     printf("\r\nCK_APB1 is %d", rcu_clock_freq_get(CK_APB1));
     printf("\r\nCK_APB2 is %d", rcu_clock_freq_get(CK_APB2));
+
+    sdram_register_dump();
+    sdram_base_stability_test();
 
     /*
      * SDRAM bring-up diagnostic at the first half-word.
