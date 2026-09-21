@@ -198,6 +198,31 @@ void mpu_config(void)
     mpu_region_config(&mpu_init_struct);
     mpu_region_enable();
 
+    /*
+     * Region 1: external SDRAM (MT48LC16M16A2, 32 MB)
+     * 0xC0000000 - 0xC1FFFFFF
+     *
+     * Region 0 intentionally blocks speculative accesses over the external
+     * address space. A higher-numbered MPU region has priority, so explicitly
+     * allow normal read/write data accesses to the SDRAM window.
+     *
+     * Keep this region non-cacheable while bringing up and testing SDRAM.
+     * This avoids D-cache hiding EXMC/SDRAM timing or wiring problems.
+     */
+    mpu_region_struct_para_init(&mpu_init_struct);
+    mpu_init_struct.region_base_address = SDRAM_BASE_ADDR;
+    mpu_init_struct.region_size         = MPU_REGION_SIZE_32MB;
+    mpu_init_struct.access_permission   = MPU_AP_FULL_ACCESS;
+    mpu_init_struct.access_bufferable   = MPU_ACCESS_NON_BUFFERABLE;
+    mpu_init_struct.access_cacheable    = MPU_ACCESS_NON_CACHEABLE;
+    mpu_init_struct.access_shareable    = MPU_ACCESS_SHAREABLE;
+    mpu_init_struct.region_number       = MPU_REGION_NUMBER1;
+    mpu_init_struct.subregion_disable   = 0x00U;
+    mpu_init_struct.instruction_exec    = MPU_INSTRUCTION_EXEC_NOT_PERMIT;
+    mpu_init_struct.tex_type            = MPU_TEX_TYPE1;
+    mpu_region_config(&mpu_init_struct);
+    mpu_region_enable();
+
     /* enable the MPU */
     ARM_MPU_Enable(MPU_MODE_PRIV_DEFAULT);
 }
