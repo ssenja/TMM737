@@ -90,6 +90,37 @@ int main(void)
     printf("\r\nCK_APB1 is %d", rcu_clock_freq_get(CK_APB1));
     printf("\r\nCK_APB2 is %d", rcu_clock_freq_get(CK_APB2));
 
+    /*
+     * SDRAM bring-up diagnostic at the first half-word.
+     * Print the actual value read back for several patterns before running
+     * the wider memory test.  This makes data-bus / command / timing faults
+     * visible on DBG_UART instead of reporting only PASS/FAIL.
+     */
+    {
+        static const uint16_t diag_pattern[] = {
+            0x0000U, 0xFFFFU, 0xAAAAU, 0x5555U, 0x1234U, 0xA5A5U, 0x5A5AU
+        };
+        uint32_t diag_i;
+        uint16_t diag_read;
+
+        printf("\r\nSDRAM diagnostic @ 0x%08lX\r\n",
+               (unsigned long)SDRAM_BASE_ADDR);
+
+        for(diag_i = 0U;
+            diag_i < (sizeof(diag_pattern) / sizeof(diag_pattern[0]));
+            ++diag_i) {
+            sdram_write16(0U, diag_pattern[diag_i]);
+            __DSB();
+            diag_read = sdram_read16(0U);
+            __DSB();
+
+            printf("WRITE 0x%04X -> READ 0x%04X : %s\r\n",
+                   (unsigned int)diag_pattern[diag_i],
+                   (unsigned int)diag_read,
+                   (diag_read == diag_pattern[diag_i]) ? "OK" : "FAIL");
+        }
+    }
+
     /* One-shot SDRAM read/write verification.
        0 = PASS, non-zero = failing byte address + 1. */
     printf("SDRAM test start...\r\n");
