@@ -1,0 +1,203 @@
+/*!
+    \file    main.c
+    \brief   led spark with systick, USART print and key example
+
+    \version 2026-03-24, V1.6.0, firmware for GD32H73x_75x
+*/
+
+/*
+    Copyright (c) 2026, GigaDevice Semiconductor Inc.
+
+    Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this
+       list of conditions and the following disclaimer.
+    2. Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimer in the documentation
+       and/or other materials provided with the distribution.
+    3. Neither the name of the copyright holder nor the names of its contributors
+       may be used to endorse or promote products derived from this software without
+       specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+OF SUCH DAMAGE.
+*/
+
+#include "gd32h73x_75x.h"
+#include "systick.h"
+#include <stdio.h>
+#include <stdint.h>
+
+#include "main.h"
+#include "sdram.h"
+
+void cache_enable(void);
+void mpu_config(void);
+static void dbg_uart_init(void);
+
+#define DBG_UART_BAUDRATE    115200U
+#define DBG_UART             USART1
+
+/*!
+    \brief      main function
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+int main(void)
+{
+#ifdef __FIRMWARE_VERSION_DEFINE
+    uint32_t fw_ver = 0;
+#endif /* __FIRMWARE_VERSION_DEFINE */
+    /* enable the CPU cache */
+    cache_enable();
+    mpu_config();
+    /* configure systick */
+    systick_config();
+
+    /* initialize debug UART: PD5 = USART1_TX, PD6 = USART1_RX */
+    dbg_uart_init();
+    printf("\r\n\r\n=== TMM384G SDRAM TEST ===\r\n");
+    printf("DBG UART : USART1 / PD5-TX PD6-RX / %lu baud\r\n",
+           (unsigned long)DBG_UART_BAUDRATE);
+
+    /* initialize external SDRAM (MT48LC16M16A2B4-6A) */
+    sdram_init();
+    /* initialize the LEDs, USART and key */
+//    gd_eval_led_init(LED1);
+//    gd_eval_led_init(LED2);
+//    gd_eval_com_init(EVAL_COM);
+//    gd_eval_key_init(KEY_WAKEUP, KEY_MODE_GPIO);
+
+#ifdef __FIRMWARE_VERSION_DEFINE
+    fw_ver = gd32h73x_75x_firmware_version_get();
+    /* print firmware version */
+    printf("\r\nGD32H7XX series firmware version: V%d.%d.%d", (uint8_t)(fw_ver >> 24), (uint8_t)(fw_ver >> 16), (uint8_t)(fw_ver >> 8));
+#endif /* __FIRMWARE_VERSION_DEFINE */
+
+    /* print out the clock frequency of system, AHB, APB1 and APB2 */
+    printf("\r\nCK_SYS is %d", rcu_clock_freq_get(CK_SYS));
+    printf("\r\nCK_AHB is %d", rcu_clock_freq_get(CK_AHB));
+    printf("\r\nCK_APB1 is %d", rcu_clock_freq_get(CK_APB1));
+    printf("\r\nCK_APB2 is %d", rcu_clock_freq_get(CK_APB2));
+
+    /* One-shot SDRAM read/write verification.
+       0 = PASS, non-zero = failing byte address + 1. */
+    printf("SDRAM test start...\r\n");
+    volatile uint32_t sdram_test_result = sdram_memory_test();
+
+    if(sdram_test_result == 0U) {
+        printf("SDRAM TEST RESULT : PASS\r\n");
+    } else {
+        printf("SDRAM TEST RESULT : FAIL\r\n");
+        printf("FAIL ADDRESS      : 0x%08lX\r\n",
+               (unsigned long)(sdram_test_result - 1U));
+        printf("FAIL BYTE ADDRESS : 0x%08lX\r\n",
+               (unsigned long)(sdram_test_result - 1U));
+    }
+    printf("===========================\r\n");
+
+    while(1)
+    {
+        /* Keep the test result visible and application ready. */
+    }
+}
+
+/*!
+    \brief      initialize debug UART (USART1)
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void dbg_uart_init(void)
+{
+    rcu_periph_clock_enable(RCU_GPIOD);
+    rcu_periph_clock_enable(RCU_USART1);
+
+    /* PD5 = USART1_TX, PD6 = USART1_RX, alternate function 7 */
+    gpio_af_set(GPIOD, GPIO_AF_7, GPIO_PIN_5 | GPIO_PIN_6);
+    gpio_mode_set(GPIOD, GPIO_MODE_AF, GPIO_PUPD_PULLUP,
+                  GPIO_PIN_5 | GPIO_PIN_6);
+    gpio_output_options_set(GPIOD, GPIO_OTYPE_PP, GPIO_OSPEED_100_220MHZ,
+                            GPIO_PIN_5 | GPIO_PIN_6);
+
+    usart_deinit(DBG_UART);
+    usart_baudrate_set(DBG_UART, DBG_UART_BAUDRATE);
+    usart_word_length_set(DBG_UART, USART_WL_8BIT);
+    usart_stop_bit_set(DBG_UART, USART_STB_1BIT);
+    usart_parity_config(DBG_UART, USART_PM_NONE);
+    usart_transmit_config(DBG_UART, USART_TRANSMIT_ENABLE);
+    usart_receive_config(DBG_UART, USART_RECEIVE_ENABLE);
+    usart_enable(DBG_UART);
+}
+
+/*!
+    \brief      retarget printf to debug USART1
+*/
+int fputc(int ch, FILE *f)
+{
+    (void)f;
+    usart_data_transmit(DBG_UART, (uint32_t)(uint8_t)ch);
+    while(RESET == usart_flag_get(DBG_UART, USART_FLAG_TBE)) {
+    }
+    return ch;
+}
+
+
+/*!
+    \brief      enable the CPU cache
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+void cache_enable(void)
+{
+    /* enable i-cache */
+    SCB_EnableICache();
+    /* enable d-cache */
+    SCB_EnableDCache();
+}
+
+/*!
+    \brief      configure the MPU attributes
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+void mpu_config(void)
+{
+    mpu_region_init_struct mpu_init_struct;
+    mpu_region_struct_para_init(&mpu_init_struct);
+
+    /* disable the MPU */
+    ARM_MPU_Disable();
+    ARM_MPU_SetRegion(0, 0);
+
+    /* configure the MPU attributes for the entire 4GB area, Reserved, no access */
+    /* This configuration is highly recommended to prevent Speculative Prefetching of external memory, 
+       which may cause CPU read locks and even system errors */
+    mpu_init_struct.region_base_address  = 0x0;
+    mpu_init_struct.region_size          = MPU_REGION_SIZE_4GB;
+    mpu_init_struct.access_permission    = MPU_AP_NO_ACCESS;
+    mpu_init_struct.access_bufferable    = MPU_ACCESS_NON_BUFFERABLE;
+    mpu_init_struct.access_cacheable     = MPU_ACCESS_NON_CACHEABLE;
+    mpu_init_struct.access_shareable     = MPU_ACCESS_SHAREABLE;
+    mpu_init_struct.region_number        = MPU_REGION_NUMBER0;
+    mpu_init_struct.subregion_disable    = 0x87;
+    mpu_init_struct.instruction_exec     = MPU_INSTRUCTION_EXEC_NOT_PERMIT;
+    mpu_init_struct.tex_type             = MPU_TEX_TYPE0;
+    mpu_region_config(&mpu_init_struct);
+    mpu_region_enable();
+
+    /* enable the MPU */
+    ARM_MPU_Enable(MPU_MODE_PRIV_DEFAULT);
+}

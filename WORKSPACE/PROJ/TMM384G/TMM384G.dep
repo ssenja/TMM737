@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>4</fileVersion>
+    <fileChecksum>1336373908</fileChecksum>
+    <configuration>
+        <name>GD32H7xx</name>
+        <outputs>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_vref.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cau.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_sdio.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_efuse.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_spi.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_mdma.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cau_aes.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_edout.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_hau_sha_md5.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_rcu.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_usart.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_crc.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_mdio.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_ctc.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_enet.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_trng.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_lpdts.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_timer.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_dac.xcl</file>
+            <file>$PROJ_DIR$\out\obj\systick.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_exti.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_hau_sha_md5.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_fmc.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_rspdif.o</file>
+            <file>$PROJ_DIR$\out\obj\system_gd32h73x_75x.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_mdma.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_dac.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_ospim.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_hpdf.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_fac.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_can.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_ospi.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_hau.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_edout.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_tmu.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_dci.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_wwdgt.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_rameccmu.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_dma.xcl</file>
+            <file>$PROJ_DIR$\out\obj\startup_gd32h73x_75x.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_gpio.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_fmc.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_lpdts.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_spi.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_rameccmu.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_fac.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_misc.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_trng.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_misc.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cau.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_hau.xcl</file>
+            <file>$PROJ_DIR$\out\obj\systick.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_sdio.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_usart.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_exmc.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_fwdgt.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_gpio.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_wwdgt.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cau_tdes.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_exti.o</file>
+            <file>$PROJ_DIR$\out\obj\sdram.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_hpdf.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_pmu.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_dma.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_fwdgt.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_rcu.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_dbg.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_ipa.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_rspdif.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_ospi.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_ctc.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_can.o</file>
+            <file>$PROJ_DIR$\out\obj\sdram.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_syscfg.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_dbg.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_it.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_tli.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_rtdec.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_efuse.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_rtc.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cpdm.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_ospim.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_trigsel.xcl</file>
+            <file>$PROJ_DIR$\out\obj\system_gd32h73x_75x.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_i2c.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_exmc.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_timer.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_i2c.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_trigsel.o</file>
+            <file>$PROJ_DIR$\out\exe\TMM384G.out</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_adc.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cau_tdes.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_adc.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_tmu.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_mdio.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cau_aes.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cmp.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_enet.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_hwsem.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_tli.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_hwsem.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cau_des.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_pmu.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cpdm.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_sai.o</file>
+            <file>$PROJ_DIR$\out\obj\main.o</file>
+            <file>$PROJ_DIR$\out\obj\TMM384G.pbd</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\BOARD\SRC\systick.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\CMSIS\GD\GD32H73x_75x\SRC\system_gd32h73x_75x.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_dac.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_enet.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cau_tdes.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_dbg.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_efuse.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_exti.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_fwdgt.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cmp.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_fmc.c</file>
+            <file>$PROJ_DIR$\SRC\sdram.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\CMSIS\GD\GD32H73x_75x\SRC\IAR\startup_gd32h73x_75x.s</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cau_aes.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cau_des.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_ctc.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_edout.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_gpio.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_adc.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_crc.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_dma.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\BOARD\SRC\gd32h73x_75x_it.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cau.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_exmc.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_hau.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_dci.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_can.c</file>
+            <file>$PROJ_DIR$\SRC\main.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cpdm.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_fac.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_mdio.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_i2c.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_hau_sha_md5.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_hpdf.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_hwsem.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_ipa.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_lpdts.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_mdma.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_tli.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_usart.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_rtc.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_tmu.c</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_syscfg.o</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_ospim.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_rameccmu.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_rcu.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_sdio.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_spi.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_misc.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_pmu.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_rspdif.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_ospi.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_trng.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_vref.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_syscfg.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_wwdgt.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_trigsel.c</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_crc.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_ipa.o</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_rtdec.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_sai.c</file>
+            <file>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_timer.c</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_sai.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cmp.xcl</file>
+            <file>$PROJ_DIR$\out\obj\main.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_cau_des.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_it.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_vref.o</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_dci.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_rtdec.xcl</file>
+            <file>$PROJ_DIR$\out\obj\gd32h73x_75x_rtc.xcl</file>
+        </outputs>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 89</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\BOARD\SRC\systick.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 19</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 51</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\CMSIS\GD\GD32H73x_75x\SRC\system_gd32h73x_75x.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 24</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 83</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_dac.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 26</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 18</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_enet.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 14</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 97</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cau_tdes.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 58</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 91</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_dbg.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 74</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 66</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_efuse.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 78</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 3</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_exti.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 59</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 20</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_fwdgt.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 55</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cmp.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 96</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 170</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_fmc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 41</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 22</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\SRC\sdram.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 60</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 72</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\CMSIS\GD\GD32H73x_75x\SRC\IAR\startup_gd32h73x_75x.s</name>
+            <outputs>
+                <tool>
+                    <name>AARM</name>
+                    <file> 39</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cau_aes.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 95</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 6</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cau_des.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 172</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 101</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_ctc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 13</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 70</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_edout.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 33</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 7</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_gpio.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 40</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 56</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_adc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 90</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 92</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_crc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 11</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 164</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_dma.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 63</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 38</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\BOARD\SRC\gd32h73x_75x_it.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 75</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 173</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cau.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 1</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 49</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_exmc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 54</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 85</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_hau.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 32</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 50</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_dci.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 35</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 175</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_can.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 71</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 30</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\SRC\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 105</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 171</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_cpdm.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 80</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 103</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_fac.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 29</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 45</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_mdio.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 94</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 12</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_i2c.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 84</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 87</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_hau_sha_md5.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 21</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_hpdf.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 28</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 61</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_hwsem.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 100</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 98</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_ipa.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 165</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 67</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_lpdts.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 42</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 16</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_mdma.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 5</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 25</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_tli.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 99</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 76</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_usart.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 10</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 53</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_rtc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 79</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 177</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_tmu.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 93</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 34</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_ospim.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 81</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 27</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_rameccmu.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 37</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 44</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_rcu.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 9</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 65</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_sdio.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 52</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 2</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_spi.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 4</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 43</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_misc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 46</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 48</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_pmu.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 102</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 62</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_rspdif.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 23</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 68</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_ospi.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 31</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 69</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_trng.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 47</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 15</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_vref.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 174</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 0</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_syscfg.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 149</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 73</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_wwdgt.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 57</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 36</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_trigsel.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 88</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 82</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_rtdec.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 77</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 176</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_sai.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 104</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 169</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_timer.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 86</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 17</file>
+                </tool>
+            </outputs>
+        </file>
+    </configuration>
+</project>

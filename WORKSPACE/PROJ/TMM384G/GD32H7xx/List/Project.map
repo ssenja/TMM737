@@ -1,0 +1,621 @@
+###############################################################################
+#
+# IAR ELF Linker V8.40.1.212/W32 for ARM                  18/Sep/2026  12:38:36
+# Copyright 2007-2019 IAR Systems AB.
+#
+#    Output file  =
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Exe\Project.out
+#    Map file     =
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\List\Project.map
+#    Command line =
+#        -f C:\Users\eddyk\AppData\Local\Temp\EW5BAA.tmp
+#        (D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_adc.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_can.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_cau.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_cau_aes.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_cau_des.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_cau_tdes.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_cmp.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_cpdm.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_crc.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_ctc.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_dac.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_dbg.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_dci.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_dma.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_edout.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_efuse.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_enet.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_exmc.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_exti.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_fac.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_fmc.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_fwdgt.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_gpio.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_hau.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_hau_sha_md5.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_hpdf.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_hwsem.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_i2c.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_ipa.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_it.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_lpdts.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_mdio.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_mdma.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_misc.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_ospi.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_ospim.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_pmu.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_rameccmu.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_rcu.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_rspdif.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_rtc.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_rtdec.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_sai.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_sdio.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_spi.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_syscfg.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_timer.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_tli.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_tmu.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_trigsel.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_trng.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_usart.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_vref.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\gd32h73x_75x_wwdgt.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\main.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\startup_gd32h73x_75x.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\system_gd32h73x_75x.o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj\systick.o
+#        --no_out_extension -o
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Exe\Project.out
+#        --map
+#        D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\List\Project.map
+#        --config "C:\DevToolz\IAR Systems\Embedded Workbench
+#        8.3\arm\config\linker\GD\GD32H737xI.icf" --semihosting --entry
+#        __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__Heap_Handler  = Basic
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x800'0000 { ro section .intvec };
+"P1":  place in [from 0x800'0000 to 0x81f'ffff] { ro };
+define block CSTACK with size = 4K, alignment = 8 { };
+define block HEAP with size = 4K, alignment = 8 { };
+"P2":  place in [from 0x2400'0000 to 0x240d'ffff] {
+          rw, block CSTACK, block HEAP };
+initialize by copy { rw };
+
+No sections matched the following patterns:
+
+  section .sram  in "P3"
+  section .sram  in "P4"
+  section .sram  in "P5"
+  section .sram  in "P6"
+
+
+  Section            Kind         Address    Size  Object
+  -------            ----         -------    ----  ------
+"A0":                                       0x3a4
+  .intvec            ro code   0x800'0000   0x3a4  startup_gd32h73x_75x.o [1]
+                             - 0x800'03a4   0x3a4
+
+"P1":                                      0x1ced
+  .text              ro code   0x800'03a4   0x788  gd32h73x_75x_rcu.o [1]
+  .text              ro code   0x800'0b2c    0x86  ABImemcpy.o [4]
+  .text              ro code   0x800'0bb2    0x3a  zero_init3.o [4]
+  .text              ro code   0x800'0bec   0x30e  system_gd32h73x_75x.o [1]
+  .text              ro code   0x800'0efc    0x9c  gd32h73x_75x_misc.o [1]
+  .text              ro code   0x800'0f98   0x1ce  main.o [1]
+  .text              ro code   0x800'1168    0x90  systick.o [1]
+  .text              ro code   0x800'11f8    0x28  printf.o [2]
+  .text              ro code   0x800'1220   0x134  xprintftiny.o [2]
+  .text              ro code   0x800'1354    0x36  strlen.o [4]
+  .text              ro code   0x800'138c   0x138  heap0.o [2]
+  .text              ro code   0x800'14c4    0x2c  xgetmemchunk.o [2]
+  .text              ro code   0x800'14f0    0xd8  xfspos.o [2]
+  .text              ro code   0x800'15c8    0xac  fflush.o [2]
+  .text              ro code   0x800'1674     0xc  xfgpos.o [2]
+  .text              ro code   0x800'1680    0x4a  lseek.o [5]
+  .text              ro code   0x800'16ca    0x10  write.o [5]
+  .text              ro code   0x800'16dc    0xcc  XShHandles.o [2]
+  .text              ro code   0x800'17a8    0x1e  dwrite.o [5]
+  .text              ro code   0x800'17c6    0x20  iarwstd.o [5]
+  .text              ro code   0x800'17e6    0x22  iarwrite.o [5]
+  .text              ro code   0x800'1808    0x7c  iarttio.o [5]
+  .text              ro code   0x800'1884    0x3c  XShttio.o [2]
+  .text              ro code   0x800'18c0    0xb4  xfwprep.o [2]
+  .text              ro code   0x800'1974    0x24  fseek.o [2]
+  .text              ro code   0x800'1998    0x9c  xfofind.o [2]
+  .text              ro code   0x800'1a34     0x4  heaptramp0.o [2]
+  .text              ro code   0x800'1a38    0x7e  fclose.o [2]
+  .text              ro code   0x800'1ab6    0x18  close.o [5]
+  .text              ro code   0x800'1ace    0x14  remove.o [5]
+  .text              ro code   0x800'1ae2    0x78  lz77_init_single.o [4]
+  .text              ro code   0x800'1b5a    0x54  fputc.o [2]
+  .text              ro code   0x800'1bb0    0x3c  xcloseall.o [2]
+  .rodata            const     0x800'1bec    0x30  main.o [1]
+  .text              ro code   0x800'1c1c    0x28  data_init.o [4]
+  .text              ro code   0x800'1c44    0x24  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1c68    0x22  fpinit_M.o [3]
+  .iar.init_table    const     0x800'1c8c    0x20  - Linker created -
+  .text              ro code   0x800'1cac    0x1e  cmain.o [4]
+  .text              ro code   0x800'1cca     0x4  low_level_init.o [2]
+  .text              ro code   0x800'1cce     0x4  exit.o [2]
+  .text              ro code   0x800'1cd4     0xe  cexit.o [4]
+  .text              ro code   0x800'1ce4    0x14  exit.o [5]
+  .text              ro code   0x800'1cf8    0x16  xprout.o [2]
+  .text              ro code   0x800'1d10     0xc  putchar.o [2]
+  .text              ro code   0x800'1d1c    0x14  gd32h73x_75x_it.o [1]
+  .rodata            const     0x800'1d30    0x10  gd32h73x_75x_rcu.o [1]
+  .rodata            const     0x800'1d40    0x10  main.o [1]
+  .rodata            const     0x800'1d50    0x10  main.o [1]
+  .rodata            const     0x800'1d60    0x10  main.o [1]
+  .rodata            const     0x800'1d70    0x10  main.o [1]
+  .text              ro code   0x800'1d80     0xc  cstartup_M.o [4]
+  .rodata            const     0x800'1d8c     0x8  gd32h73x_75x_rcu.o [1]
+  .rodata            const     0x800'1d94     0x8  gd32h73x_75x_rcu.o [1]
+  .rodata            const     0x800'1d9c     0x8  gd32h73x_75x_rcu.o [1]
+  .rodata            const     0x800'1da4     0x8  gd32h73x_75x_rcu.o [1]
+  .text              ro code   0x800'1dac     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1db0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1db4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1db8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1dbc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1dc0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1dc4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1dc8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1dcc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1dd0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1dd4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1dd8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ddc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1de0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1de4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1de8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1dec     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1df0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1df4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1df8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1dfc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e00     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e04     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e08     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e0c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e10     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e14     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e18     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e1c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e20     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e24     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e28     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e2c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e30     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e34     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e38     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e3c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e40     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e44     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e48     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e4c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e50     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e54     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e58     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e5c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e60     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e64     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e68     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e6c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e70     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e74     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e78     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e7c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e80     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e84     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e88     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e8c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e90     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e94     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e98     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1e9c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ea0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ea4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ea8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1eac     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1eb0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1eb4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1eb8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ebc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ec0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ec4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ec8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ecc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ed0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ed4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ed8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1edc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ee0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ee4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ee8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1eec     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ef0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ef4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ef8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1efc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f00     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f04     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f08     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f0c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f10     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f14     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f18     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f1c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f20     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f24     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f28     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f2c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f30     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f34     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f38     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f3c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f40     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f44     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f48     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f4c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f50     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f54     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f58     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f5c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f60     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f64     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f68     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f6c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f70     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f74     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f78     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f7c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f80     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f84     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f88     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f8c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f90     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f94     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f98     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1f9c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fa0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fa4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fa8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fac     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fb0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fb4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fb8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fbc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fc0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fc4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fc8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fcc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fd0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fd4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fd8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fdc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fe0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fe4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fe8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1fec     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ff0     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ff4     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ff8     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'1ffc     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'2000     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'2004     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'2008     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'200c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'2010     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'2014     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'2018     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'201c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'2020     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'2024     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'2028     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'202c     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'2030     0x4  startup_gd32h73x_75x.o [1]
+  .text              ro code   0x800'2034     0x0  cstart_closeall.o [4]
+  .rodata            const     0x800'2034     0x0  zero_init3.o [4]
+  .rodata            const     0x800'2034     0x0  lz77_init_single.o [4]
+  Initializer bytes  const     0x800'2034    0x5d  <for P2-1>
+                             - 0x800'2091  0x1ced
+
+"P2", part 1 of 3:                          0x104
+  P2-1                        0x2400'0000   0x104  <Init block>
+    .data            inited   0x2400'0000     0x4  system_gd32h73x_75x.o [1]
+    .data            inited   0x2400'0004    0x48  xfiles.o [2]
+    .data            inited   0x2400'004c    0x48  xfiles.o [2]
+    .data            inited   0x2400'0094    0x48  xfiles.o [2]
+    .data            inited   0x2400'00dc    0x20  xfiles.o [2]
+    .data            inited   0x2400'00fc     0x8  XShttio.o [2]
+                            - 0x2400'0104   0x104
+
+"P2", part 2 of 3:                          0x130
+  .bss               zero     0x2400'0104    0x80  XShHandles.o [2]
+  .bss               zero     0x2400'0184    0x50  xfiles.o [2]
+  .bss               zero     0x2400'01d4    0x50  xfiles.o [2]
+  .bss               zero     0x2400'0224     0x8  heap0.o [2]
+  .bss               zero     0x2400'022c     0x4  xgetmemchunk.o [2]
+  .bss               zero     0x2400'0230     0x1  XShttio.o [2]
+                            - 0x2400'0231   0x12d
+
+"P2", part 3 of 3:                         0x2000
+  CSTACK                      0x2400'0238  0x1000  <Block>
+    CSTACK           uninit   0x2400'0238  0x1000  <Block tail>
+  HEAP                        0x2400'1238  0x1000  <Block>
+    HEAP             uninit   0x2400'1238  0x1000  <Block tail>
+                            - 0x2400'2238  0x2000
+
+Unused ranges:
+
+         From           To       Size
+         ----           --       ----
+   0x800'2091   0x81f'ffff  0x1f'df6f
+  0x2400'0234  0x2400'0237        0x4
+  0x2400'2238  0x240d'ffff   0xd'ddc8
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x12d:
+          0x2400'0104  0x12d
+
+Copy/lz77 (__iar_lz77_init_single3)
+    1 source range, total size 0x5d (35% of destination):
+           0x800'2034   0x5d
+    1 destination range, total size 0x104:
+          0x2400'0000  0x104
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                  ro code  ro data  rw data
+    ------                  -------  -------  -------
+command line/config:
+    -------------------------------------------------
+    Total:
+
+D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj: [1]
+    gd32h73x_75x_it.o            20
+    gd32h73x_75x_misc.o         156
+    gd32h73x_75x_rcu.o        1'928       48
+    main.o                      462      112
+    startup_gd32h73x_75x.o    1'616
+    system_gd32h73x_75x.o       782        1        4
+    systick.o                   144
+    -------------------------------------------------
+    Total:                    5'108      161        4
+
+dl7M_tlf.a: [2]
+    XShHandles.o                204               128
+    XShttio.o                    60        3        9
+    exit.o                        4
+    fclose.o                    126
+    fflush.o                    172
+    fputc.o                      84
+    fseek.o                      36
+    heap0.o                     312                 8
+    heaptramp0.o                  4
+    low_level_init.o              4
+    printf.o                     40
+    putchar.o                    12
+    xcloseall.o                  60
+    xfgpos.o                     12
+    xfiles.o                              89      408
+    xfofind.o                   156
+    xfspos.o                    216
+    xfwprep.o                   180
+    xgetmemchunk.o               44                 4
+    xprintftiny.o               308
+    xprout.o                     22
+    -------------------------------------------------
+    Total:                    2'056       92      557
+
+m7M_tlv.a: [3]
+    fpinit_M.o                   34
+    -------------------------------------------------
+    Total:                       34
+
+rt7M_tl.a: [4]
+    ABImemcpy.o                 134
+    cexit.o                      14
+    cmain.o                      30
+    cstart_closeall.o
+    cstartup_M.o                 12
+    data_init.o                  40
+    lz77_init_single.o          120
+    strlen.o                     54
+    zero_init3.o                 58
+    -------------------------------------------------
+    Total:                      462
+
+shb_l.a: [5]
+    close.o                      24
+    dwrite.o                     30
+    exit.o                       20
+    iarttio.o                   124
+    iarwrite.o                   34
+    iarwstd.o                    32
+    lseek.o                      74
+    remove.o                     20
+    write.o                      16
+    -------------------------------------------------
+    Total:                      374
+
+    Gaps                         16        2
+    Linker created                        32    8'192
+-----------------------------------------------------
+    Grand Total:              8'050      287    8'753
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base    0x800'1c8c          --   Gb  - Linker created -
+.iar.init_table$$Limit   0x800'1cac          --   Gb  - Linker created -
+?main                    0x800'1cad         Code  Gb  cmain.o [4]
+ARM_MPU_Disable          0x800'0fb5   0x1e  Code  Lc  main.o [1]
+ARM_MPU_Enable           0x800'0f99   0x1c  Code  Lc  main.o [1]
+ARM_MPU_SetRegion        0x800'0fd3    0xa  Code  Lc  main.o [1]
+Aldata                  0x2400'0224    0x8  Data  Lc  heap0.o [2]
+BusFault_Handler         0x800'1d23    0x2  Code  Gb  gd32h73x_75x_it.o [1]
+CSTACK$$Base            0x2400'0238          --   Gb  - Linker created -
+CSTACK$$Limit           0x2400'1238          --   Gb  - Linker created -
+DebugMon_Handler         0x800'1d27    0x2  Code  Gb  gd32h73x_75x_it.o [1]
+FPU_IRQHandler           0x800'1d2d    0x2  Code  Gb  gd32h73x_75x_it.o [1]
+HEAP$$Base              0x2400'1238          --   Gb  - Linker created -
+HEAP$$Limit             0x2400'2238          --   Gb  - Linker created -
+HardFault_Handler        0x800'1d1f    0x2  Code  Gb  gd32h73x_75x_it.o [1]
+MemManage_Handler        0x800'1d21    0x2  Code  Gb  gd32h73x_75x_it.o [1]
+NMI_Handler              0x800'1d1d    0x2  Code  Gb  gd32h73x_75x_it.o [1]
+PendSV_Handler           0x800'1d2b    0x2  Code  Gb  gd32h73x_75x_it.o [1]
+Region$$Table$$Base      0x800'1c8c          --   Gb  - Linker created -
+Region$$Table$$Limit     0x800'1cac          --   Gb  - Linker created -
+SCB_DisableDCache        0x800'0c43   0x52  Code  Lc  system_gd32h73x_75x.o [1]
+SCB_EnableDCache         0x800'1007   0x52  Code  Lc  main.o [1]
+SCB_EnableDCache         0x800'0bed   0x56  Code  Lc  system_gd32h73x_75x.o [1]
+SCB_EnableICache         0x800'0fdd   0x2a  Code  Lc  main.o [1]
+SVC_Handler              0x800'1d29    0x2  Code  Gb  gd32h73x_75x_it.o [1]
+SysTick_Config           0x800'118d   0x2e  Code  Lc  systick.o [1]
+SysTick_Handler          0x800'1d2f    0x2  Code  Gb  gd32h73x_75x_it.o [1]
+SystemCoreClock         0x2400'0000    0x4  Data  Gb  system_gd32h73x_75x.o [1]
+SystemInit               0x800'0c95   0xe0  Code  Gb  system_gd32h73x_75x.o [1]
+UsageFault_Handler       0x800'1d25    0x2  Code  Gb  gd32h73x_75x_it.o [1]
+_Close_all               0x800'1bb1   0x3c  Code  Gb  xcloseall.o [2]
+_Files                  0x2400'00dc   0x20  Data  Gb  xfiles.o [2]
+_Fofree                  0x800'1999   0x96  Code  Gb  xfofind.o [2]
+_Fspos                   0x800'14f1   0xd8  Code  Gb  xfspos.o [2]
+_Fwprep                  0x800'18c1   0xb4  Code  Gb  xfwprep.o [2]
+_Nnl                     0x800'1675    0xc  Code  Gb  xfgpos.o [2]
+_PrintfTiny              0x800'1239  0x11c  Code  Gb  xprintftiny.o [2]
+_Prout                   0x800'1cf9   0x16  Code  Gb  xprout.o [2]
+__NVIC_SetPriority       0x800'1169   0x24  Code  Lc  systick.o [1]
+__aeabi_memcpy4          0x800'0b2d         Code  Gb  ABImemcpy.o [4]
+__aeabi_memcpy8          0x800'0b2d         Code  Gb  ABImemcpy.o [4]
+__basic_free             0x800'1437   0x16  Code  Gb  heap0.o [2]
+__basic_free_intern      0x800'144d   0x74  Code  Lc  heap0.o [2]
+__basic_malloc           0x800'138d   0x18  Code  Gb  heap0.o [2]
+__basic_malloc_intern    0x800'13a5   0x92  Code  Lc  heap0.o [2]
+__cexit_closeall         0x800'1cd7         Code  Gb  cexit.o [4]
+__close                  0x800'1ab7   0x18  Code  Gb  close.o [5]
+__cmain                  0x800'1cad         Code  Gb  cmain.o [4]
+__cstart_closeall        0x800'2034         Data  Gb  cstart_closeall.o [4]
+__data_GetMemChunk       0x800'14c5   0x2c  Code  Gb  xgetmemchunk.o [2]
+__data_GetMemChunk::start
+                        0x2400'022c    0x4  Data  Lc  xgetmemchunk.o [2]
+__dwrite                 0x800'17a9   0x1e  Code  Gb  dwrite.o [5]
+__exit                   0x800'1ce5   0x14  Code  Gb  exit.o [5]
+__iar_Stderr            0x2400'0094   0x48  Data  Gb  xfiles.o [2]
+__iar_Stdin             0x2400'0004   0x48  Data  Gb  xfiles.o [2]
+__iar_Stdout            0x2400'004c   0x48  Data  Gb  xfiles.o [2]
+__iar_close_ttio         0x800'1809   0x2c  Code  Gb  iarttio.o [5]
+__iar_data_init3         0x800'1c1d   0x28  Code  Gb  data_init.o [4]
+__iar_get_ttio           0x800'1835   0x4c  Code  Gb  iarttio.o [5]
+__iar_init_vfp           0x800'1c69         Code  Gb  fpinit_M.o [3]
+__iar_lookup_ttioh       0x800'18b3    0x4  Code  Gb  XShttio.o [2]
+__iar_lz77_init_single3
+                         0x800'1ae3   0x78  Code  Gb  lz77_init_single.o [4]
+__iar_program_start      0x800'1d81         Code  Gb  cstartup_M.o [4]
+__iar_sh_Discard         0x800'16dd   0x42  Code  Gb  XShHandles.o [2]
+__iar_sh_Move            0x800'171f   0x46  Code  Gb  XShHandles.o [2]
+__iar_sh_Pos             0x800'1765   0x3e  Code  Gb  XShHandles.o [2]
+__iar_sh_stdout          0x800'17c7   0x20  Code  Gb  iarwstd.o [5]
+__iar_sh_write           0x800'17e7   0x22  Code  Gb  iarwrite.o [5]
+__iar_ttio_guard_lock    0x800'1885   0x1e  Code  Gb  XShttio.o [2]
+__iar_ttio_guard_unlock
+                         0x800'18a3   0x10  Code  Gb  XShttio.o [2]
+__iar_ttio_handles      0x2400'00fc    0x8  Data  Lc  XShttio.o [2]
+__iar_zero_init3         0x800'0bb3   0x3a  Code  Gb  zero_init3.o [4]
+__low_level_init         0x800'1ccb    0x4  Code  Gb  low_level_init.o [2]
+__lseek                  0x800'1681   0x4a  Code  Gb  lseek.o [5]
+__vector_table           0x800'0000         Data  Gb  startup_gd32h73x_75x.o [1]
+__write                  0x800'16cb   0x10  Code  Gb  write.o [5]
+_call_main               0x800'1cb9         Code  Gb  cmain.o [4]
+_exit                    0x800'1cd5         Code  Gb  cexit.o [4]
+_main                    0x800'1cc7         Code  Gb  cmain.o [4]
+cache_enable             0x800'10f9    0xc  Code  Gb  main.o [1]
+ebuf                    0x2400'0184   0x50  Data  Lc  xfiles.o [2]
+exit                     0x800'1ccf    0x4  Code  Gb  exit.o [2]
+fclose                   0x800'1a39   0x7e  Code  Gb  fclose.o [2]
+fflush                   0x800'163d   0x34  Code  Gb  fflush.o [2]
+fflushOne                0x800'15c9   0x74  Code  Lc  fflush.o [2]
+fputc                    0x800'1b5b   0x54  Code  Gb  fputc.o [2]
+free                     0x800'1a35    0x4  Code  Gb  heaptramp0.o [2]
+fseek                    0x800'1975   0x24  Code  Gb  fseek.o [2]
+gd32h73x_75x_firmware_version_get
+                         0x800'0ef5    0x6  Code  Gb  system_gd32h73x_75x.o [1]
+main                     0x800'1059   0x66  Code  Gb  main.o [1]
+mpu_config               0x800'1105   0x62  Code  Gb  main.o [1]
+mpu_region_config        0x800'0f37   0x40  Code  Gb  gd32h73x_75x_misc.o [1]
+mpu_region_enable        0x800'0f77    0xc  Code  Gb  gd32h73x_75x_misc.o [1]
+mpu_region_struct_para_init
+                         0x800'0f0d   0x2a  Code  Gb  gd32h73x_75x_misc.o [1]
+nvic_vector_table_set    0x800'0efd   0x10  Code  Gb  gd32h73x_75x_misc.o [1]
+obuf                    0x2400'01d4   0x50  Data  Lc  xfiles.o [2]
+out                      0x800'1221   0x18  Code  Lc  xprintftiny.o [2]
+printf                   0x800'11f9   0x28  Code  Gb  printf.o [2]
+putchar                  0x800'1d11    0xc  Code  Gb  putchar.o [2]
+rcu_clock_freq_get       0x800'0455  0x694  Code  Gb  gd32h73x_75x_rcu.o [1]
+rcu_irc64mdiv_freq_get   0x800'03a5   0x4a  Code  Gb  gd32h73x_75x_rcu.o [1]
+rcu_pll_clock_freq_cal   0x800'03f1   0x4a  Code  Lc  gd32h73x_75x_rcu.o [1]
+remove                   0x800'1acf   0x14  Code  Gb  remove.o [5]
+sFileInfo               0x2400'0104   0x80  Data  Lc  XShHandles.o [2]
+strlen                   0x800'1355         Code  Gb  strlen.o [4]
+system_clock_600m_hxtal
+                         0x800'0d7d   0xd0  Code  Lc  system_gd32h73x_75x.o [1]
+system_clock_config      0x800'0d75    0x8  Code  Lc  system_gd32h73x_75x.o [1]
+systick_config           0x800'11bb   0x24  Code  Gb  systick.o [1]
+ttio_guard              0x2400'0230    0x1  Data  Lc  XShttio.o [2]
+
+
+[1] = D:\THERMOEYE\TM737GD\FW\WORKSPACE\PROJ\TMM384G\GD32H7xx\Obj
+[2] = dl7M_tlf.a
+[3] = m7M_tlv.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+  8'050 bytes of readonly  code memory
+    287 bytes of readonly  data memory
+  8'753 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
