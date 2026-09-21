@@ -1,0 +1,69 @@
+gd32h73x_75x_rameccmu.pbi: \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\BSP\GD32H7xx_HAL\SRC\gd32h73x_75x_rameccmu.c \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC\gd32h73x_75x_rameccmu.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\CMSIS\GD\GD32H73x_75x\INC\gd32h73x_75x.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\CMSIS\Core\Include\core_cm7.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\stdint.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\ycheck.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\yvals.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\DLib_Defaults.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\DLib_Config_Full.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\DLib_Product.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\CMSIS\Core\Include/cmsis_version.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\CMSIS\Core\Include/cmsis_compiler.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\CMSIS\Core\Include\cmsis_iccarm.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\iccarm_builtin.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\CMSIS\Core\Include/mpu_armv7.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\CMSIS\Core\Include/cachel1_armv7.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\CMSIS\GD\GD32H73x_75x\INC/system_gd32h73x_75x.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC\gd32h73x_75x_libopt.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_adc.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_axiim.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_can.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_cau.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_cmp.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_cpdm.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_crc.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_ctc.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_dac.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_dbg.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_dci.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_dma.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_edout.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_efuse.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_enet.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_exmc.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_exti.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_fac.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_fmc.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_fwdgt.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_gpio.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_hau.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_hpdf.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_hwsem.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_i2c.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_ipa.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_lpdts.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_mdio.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_mdma.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_misc.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_ospi.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_ospim.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_pmu.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_rameccmu.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_rcu.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_rspdif.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_rtc.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_rtdec.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_sai.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_sdio.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_spi.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_syscfg.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_timer.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_tli.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_tmu.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_trigsel.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_trng.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_usart.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_vref.h \
+  S:\Project\ThermoEye\TMM640G\Software\TM737GD\FW\WORKSPACE\PROJ\TMM384G\..\..\..\BSP\GD32H7xx_HAL\INC/gd32h73x_75x_wwdgt.h
