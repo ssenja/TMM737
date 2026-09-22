@@ -211,26 +211,34 @@ int main(void)
         printf("===================================\r\n");
     }
 
-    /* One-shot SDRAM read/write verification.
-       0 = PASS, non-zero = failing byte address + 1. */
-    printf("SDRAM test start...\r\n");
-    volatile uint32_t sdram_test_result = sdram_memory_test();
-
-    if(sdram_test_result == 0U) {
-        printf("SDRAM TEST RESULT : PASS\r\n");
-    } else {
-        printf("SDRAM TEST RESULT : FAIL\r\n");
-        printf("FAIL ADDRESS      : 0x%08lX\r\n",
-               (unsigned long)(sdram_test_result - 1U));
-        printf("FAIL BYTE ADDRESS : 0x%08lX\r\n",
-               (unsigned long)(sdram_test_result - 1U));
-    }
-    printf("===========================\r\n");
+    /*
+     * Oscilloscope diagnostic:
+     * alternate two adjacent 16-bit SDRAM addresses forever.
+     *
+     * Probe points:
+     *   PF0 = EXMC_A0
+     *   PH3 = EXMC_SDNE0 / CS
+     *   PH5 = EXMC_SDNWE / WE
+     *   PG8 = EXMC_SDCLK
+     *
+     * 0xC0000000 and 0xC0000002 differ only in the first half-word
+     * address bit, so PF0 should show address activity during accesses.
+     */
+    printf("\r\n=== SDRAM A0 SCOPE TEST ===\r\n");
+    printf("Probe PF0(A0), PH3(CS), PH5(WE), PG8(CLK)\r\n");
+    printf("Alternating 0xC0000000 / 0xC0000002 continuously...\r\n");
 
     while(1)
     {
-        /* Keep the test result visible and application ready. */
+        *(volatile uint16_t *)(SDRAM_BASE_ADDR + 0x00000000U) = 0xAAAAU;
+        __DSB();
+        delay_1ms(1U);
+
+        *(volatile uint16_t *)(SDRAM_BASE_ADDR + 0x00000002U) = 0x5555U;
+        __DSB();
+        delay_1ms(1U);
     }
+
 }
 
 /*!
