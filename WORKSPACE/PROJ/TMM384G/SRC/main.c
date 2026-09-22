@@ -212,31 +212,58 @@ int main(void)
     }
 
     /*
-     * Oscilloscope diagnostic:
-     * alternate two adjacent 16-bit SDRAM addresses forever.
-     *
-     * Probe points:
-     *   PF0 = EXMC_A0
-     *   PH3 = EXMC_SDNE0 / CS
-     *   PH5 = EXMC_SDNWE / WE
-     *   PG8 = EXMC_SDCLK
-     *
-     * 0xC0000000 and 0xC0000002 differ only in the first half-word
-     * address bit, so PF0 should show address activity during accesses.
+     * Software-only address signature diagnostic.
+     * Write a unique value to each power-of-two half-word offset, then
+     * read all locations back after every write has completed.  This
+     * exposes aliasing/address-collapse without an oscilloscope.
      */
-    printf("\r\n=== SDRAM A0 SCOPE TEST ===\r\n");
-    printf("Probe PF0(A0), PH3(CS), PH5(WE), PG8(CLK)\r\n");
-    printf("Alternating 0xC0000000 / 0xC0000002 continuously...\r\n");
+    {
+        static const uint32_t sig_offset[] = {
+            0x00000000U,
+            0x00000002U, 0x00000004U, 0x00000008U, 0x00000010U,
+            0x00000020U, 0x00000040U, 0x00000080U, 0x00000100U,
+            0x00000200U, 0x00000400U, 0x00000800U, 0x00001000U,
+            0x00002000U, 0x00004000U, 0x00008000U, 0x00010000U,
+            0x00020000U, 0x00040000U, 0x00080000U, 0x00100000U,
+            0x00200000U, 0x00400000U, 0x00800000U, 0x01000000U
+        };
+        uint32_t i;
+        uint32_t count = sizeof(sig_offset) / sizeof(sig_offset[0]);
+        uint32_t failures = 0U;
+        uint16_t expected;
+        uint16_t actual;
+
+        printf("\r\n=== SDRAM ADDRESS SIGNATURE TEST ===\r\n");
+
+        for(i = 0U; i < count; ++i) {
+            expected = (uint16_t)(0x6000U + i);
+            sdram_write16(sig_offset[i], expected);
+            __DSB();
+        }
+
+        for(i = 0U; i < count; ++i) {
+            expected = (uint16_t)(0x6000U + i);
+            actual = sdram_read16(sig_offset[i]);
+            printf("OFF=0x%08lX EXP=%04X READ=%04X : %s\r\n",
+                   (unsigned long)sig_offset[i],
+                   (unsigned int)expected,
+                   (unsigned int)actual,
+                   (actual == expected) ? "OK" : "FAIL");
+            if(actual != expected) {
+                ++failures;
+            }
+        }
+
+        printf("SIGNATURE RESULT : %s (%lu/%lu FAIL)\r\n",
+               (failures == 0U) ? "PASS" : "FAIL",
+               (unsigned long)failures,
+               (unsigned long)count);
+        printf("====================================\r\n");
+    }
 
     while(1)
     {
-        *(volatile uint16_t *)(SDRAM_BASE_ADDR + 0x00000000U) = 0xAAAAU;
-        __DSB();
-        delay_1ms(1U);
-
-        *(volatile uint16_t *)(SDRAM_BASE_ADDR + 0x00000002U) = 0x5555U;
-        __DSB();
-        delay_1ms(1U);
+        /* Diagnostic complete. */
     }
 
 }
