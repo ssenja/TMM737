@@ -144,7 +144,7 @@ void sdram_init(void)
 
     exmc_sdram_struct_para_init(&sdram);
     sdram.sdram_device        = EXMC_SDRAM_DEVICE0;
-    sdram.pipeline_read_delay = EXMC_PIPELINE_DELAY_0_CK_EXMC;
+    sdram.pipeline_read_delay = EXMC_PIPELINE_DELAY_1_CK_EXMC;
     sdram.burst_read_switch   = DISABLE;
     sdram.sdclock_config      = EXMC_SDCLK_PERIODS_2_CK_EXMC;
     sdram.write_protection    = DISABLE;
