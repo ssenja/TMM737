@@ -5,6 +5,7 @@
 
 #include "sdram.h"
 #include "systick.h"
+#include <stdio.h>
 
 #define SDRAM_MODE_BURST_LENGTH_1       0x0000U
 #define SDRAM_MODE_BURST_TYPE_SEQUENTIAL 0x0000U
@@ -32,6 +33,23 @@
  *
  * These signals are EXMC alternate function 12 on GD32H737.
  */
+static uint32_t sdram_wait_ready(const char *step)
+{
+    uint32_t timeout = 1000000U;
+
+    while((EXMC_SDSTAT & EXMC_SDSDAT_NRDY) != 0U) {
+        if(--timeout == 0U) {
+            printf("%-16s : TIMEOUT SDSTAT=0x%08lX\r\n",
+                   step, (unsigned long)EXMC_SDSTAT);
+            return 0U;
+        }
+    }
+
+    printf("%-16s : READY   SDSTAT=0x%08lX\r\n",
+           step, (unsigned long)EXMC_SDSTAT);
+    return 1U;
+}
+
 static void sdram_gpio_config(void)
 {
     const uint32_t af = GPIO_AF_12;
@@ -139,6 +157,9 @@ void sdram_init(void)
 
     exmc_sdram_init(&sdram);
 
+    printf("\r\n=== SDRAM INIT TRACE ===\r\n");
+    printf("AFTER CONFIG     : SDSTAT=0x%08lX\r\n", (unsigned long)EXMC_SDSTAT);
+
     /* SDRAM power-up stabilization. */
     delay_1ms(1U);
 
@@ -148,33 +169,41 @@ void sdram_init(void)
     command.bank_select = EXMC_SDRAM_DEVICE0_SELECT;
     command.command = EXMC_SDRAM_CLOCK_ENABLE;
     exmc_sdram_command_config(&command);
+    sdram_wait_ready("CLOCK ENABLE");
     delay_1ms(1U);
 
     /* Precharge all banks. */
     command.command = EXMC_SDRAM_PRECHARGE_ALL;
     exmc_sdram_command_config(&command);
+    sdram_wait_ready("PRECHARGE ALL");
 
     /* Two auto-refresh commands. */
     command.command = EXMC_SDRAM_AUTO_REFRESH;
     command.auto_refresh_number = EXMC_SDRAM_AUTO_REFLESH_2_SDCLK;
     exmc_sdram_command_config(&command);
+    sdram_wait_ready("AUTO REFRESH");
 
     /* Load SDRAM mode register: BL=1, sequential, CL=3, single write burst. */
     command.command = EXMC_SDRAM_LOAD_MODE_REGISTER;
     command.auto_refresh_number = EXMC_SDRAM_AUTO_REFLESH_1_SDCLK;
     command.mode_register_content = SDRAM_MODE_REGISTER;
     exmc_sdram_command_config(&command);
+    sdram_wait_ready("LOAD MODE");
 
     /* Normal operation. */
     command.command = EXMC_SDRAM_NORMAL_OPERATION;
     command.mode_register_content = 0U;
     exmc_sdram_command_config(&command);
+    sdram_wait_ready("NORMAL");
 
     /*
      * 8192 rows / 64ms. At 150MHz:
      * 150,000,000 * 64ms / 8192 = 1171.875 clocks.
      */
     exmc_sdram_refresh_count_set(1172U);
+    printf("REFRESH SET      : SDARI=0x%08lX SDSTAT=0x%08lX\r\n",
+           (unsigned long)EXMC_SDARI, (unsigned long)EXMC_SDSTAT);
+    printf("========================\r\n");
 }
 
 /* Byte address must be half-word aligned. */
