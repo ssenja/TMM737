@@ -214,12 +214,6 @@ static uint32_t sdram_full_memory_test(void)
     return 0U;
 }
 
-static uint32_t gpio_af_read(uint32_t gpio_periph, uint32_t pin);
-static void sdram_register_dump(void);
-static void sdram_base_stability_test(void);
-static void unused_peripheral_clocks_disable(void);
-static uint32_t sdram_full_memory_test(void);
-
 #define DBG_UART_BAUDRATE    115200U
 #define DBG_UART             USART1
 
@@ -232,215 +226,38 @@ static uint32_t sdram_full_memory_test(void);
 int main(void)
 {
 #ifdef __FIRMWARE_VERSION_DEFINE
-    uint32_t fw_ver = 0;
-#endif /* __FIRMWARE_VERSION_DEFINE */
-    /* enable the CPU cache */
+    uint32_t fw_ver = 0U;
+#endif
+
     cache_enable();
     mpu_config();
-    /* configure systick */
     systick_config();
 
-    /* initialize debug UART: PD5 = USART1_TX, PD6 = USART1_RX */
     dbg_uart_init();
     printf("\r\n\r\n=== TMM384G SDRAM TEST ===\r\n");
     printf("DBG UART : USART1 / PD5-TX PD6-RX / %lu baud\r\n",
            (unsigned long)DBG_UART_BAUDRATE);
 
-    /* Gate clocks to blocks not used by the current SDRAM test firmware. */
+    /* Reduce dynamic power before enabling the blocks required by SDRAM. */
     unused_peripheral_clocks_disable();
 
-    /* initialize external SDRAM (MT48LC16M16A2B4-6A) */
+    /* MT48LC16M16A2B4-6A, 32 MiB, EXMC read pipeline = 1 CK. */
     sdram_init();
-    /* initialize the LEDs, USART and key */
-//    gd_eval_led_init(LED1);
-//    gd_eval_led_init(LED2);
-//    gd_eval_com_init(EVAL_COM);
-//    gd_eval_key_init(KEY_WAKEUP, KEY_MODE_GPIO);
 
 #ifdef __FIRMWARE_VERSION_DEFINE
     fw_ver = gd32h73x_75x_firmware_version_get();
-    /* print firmware version */
-    printf("\r\nGD32H7XX series firmware version: V%d.%d.%d", (uint8_t)(fw_ver >> 24), (uint8_t)(fw_ver >> 16), (uint8_t)(fw_ver >> 8));
-#endif /* __FIRMWARE_VERSION_DEFINE */
+    printf("\r\nGD32H7XX series firmware version: V%d.%d.%d\r\n",
+           (uint8_t)(fw_ver >> 24), (uint8_t)(fw_ver >> 16),
+           (uint8_t)(fw_ver >> 8));
+#endif
 
-    /* print out the clock frequency of system, AHB, APB1 and APB2 */
-    printf("\r\nCK_SYS is %d", rcu_clock_freq_get(CK_SYS));
-    printf("\r\nCK_AHB is %d", rcu_clock_freq_get(CK_AHB));
-    printf("\r\nCK_APB1 is %d", rcu_clock_freq_get(CK_APB1));
-    printf("\r\nCK_APB2 is %d", rcu_clock_freq_get(CK_APB2));
-
-    sdram_register_dump();
-    sdram_base_stability_test();
+    printf("CK_SYS  = %lu\r\n", (unsigned long)rcu_clock_freq_get(CK_SYS));
+    printf("CK_AHB  = %lu\r\n", (unsigned long)rcu_clock_freq_get(CK_AHB));
 
     /*
-     * SDRAM bring-up diagnostic at the first half-word.
-     * Print the actual value read back for several patterns before running
-     * the wider memory test.  This makes data-bus / command / timing faults
-     * visible on DBG_UART instead of reporting only PASS/FAIL.
-     */
-    {
-        static const uint16_t diag_pattern[] = {
-            0x0000U, 0xFFFFU, 0xAAAAU, 0x5555U, 0x1234U, 0xA5A5U, 0x5A5AU
-        };
-        uint32_t diag_i;
-        uint16_t diag_read;
-
-        printf("\r\nSDRAM diagnostic @ 0x%08lX\r\n",
-               (unsigned long)SDRAM_BASE_ADDR);
-
-        for(diag_i = 0U;
-            diag_i < (sizeof(diag_pattern) / sizeof(diag_pattern[0]));
-            ++diag_i) {
-            sdram_write16(0U, diag_pattern[diag_i]);
-            __DSB();
-            diag_read = sdram_read16(0U);
-            __DSB();
-
-            printf("WRITE 0x%04X -> READ 0x%04X : %s\r\n",
-                   (unsigned int)diag_pattern[diag_i],
-                   (unsigned int)diag_read,
-                   (diag_read == diag_pattern[diag_i]) ? "OK" : "FAIL");
-        }
-    }
-
-    /*
-     * SDRAM geometry diagnostic for MT48LC16M16A2:
-     * 512 columns x 8192 rows x 4 banks x 16 bits.
-     * CPU byte offsets for a 16-bit SDRAM:
-     *   column A0..A8 : 2^(1..9)
-     *   row    A0..A12: 2^(10..22)
-     *   bank   BA0..BA1: 2^(23..24)
-     *
-     * Each bit is tested independently against offset 0 so a failing/aliased
-     * address cannot contaminate the following test.
-     */
-    {
-        uint32_t bit;
-        uint32_t offset;
-        uint32_t failures = 0U;
-        uint16_t base_read;
-        uint16_t target_read;
-        const char *group;
-        uint32_t signal;
-
-        printf("\r\n=== SDRAM GEOMETRY ADDRESS TEST ===\r\n");
-
-        for(bit = 1U; bit <= 24U; ++bit) {
-            offset = (1UL << bit);
-
-            if(bit <= 9U) {
-                group = "COLUMN A";
-                signal = bit - 1U;
-            } else if(bit <= 22U) {
-                group = "ROW A";
-                signal = bit - 10U;
-            } else {
-                group = "BANK BA";
-                signal = bit - 23U;
-            }
-
-            /*
-             * First prove base and target can hold opposite values.
-             * Restore both locations after every bit test.
-             */
-            sdram_write16(0U, 0xAAAAU);
-            sdram_write16(offset, 0x5555U);
-            __DSB();
-
-            base_read = sdram_read16(0U);
-            target_read = sdram_read16(offset);
-            __DSB();
-
-            if((base_read == 0xAAAAU) && (target_read == 0x5555U)) {
-                printf("%s%lu OFFSET=0x%08lX : PASS\r\n",
-                       group, (unsigned long)signal, (unsigned long)offset);
-            } else {
-                printf("%s%lu OFFSET=0x%08lX : FAIL BASE=%04X TARGET=%04X\r\n",
-                       group, (unsigned long)signal, (unsigned long)offset,
-                       (unsigned int)base_read, (unsigned int)target_read);
-                ++failures;
-            }
-
-            /* Reverse the patterns to catch stuck-high/stuck-low aliasing. */
-            sdram_write16(0U, 0x5555U);
-            sdram_write16(offset, 0xAAAAU);
-            __DSB();
-
-            base_read = sdram_read16(0U);
-            target_read = sdram_read16(offset);
-            __DSB();
-
-            if((base_read != 0x5555U) || (target_read != 0xAAAAU)) {
-                printf("  REVERSE : FAIL BASE=%04X TARGET=%04X\r\n",
-                       (unsigned int)base_read, (unsigned int)target_read);
-                ++failures;
-            }
-
-            sdram_write16(0U, 0x0000U);
-            sdram_write16(offset, 0x0000U);
-            __DSB();
-        }
-
-        printf("GEOMETRY ADDRESS RESULT : %s (%lu)\r\n",
-               (failures == 0U) ? "PASS" : "FAIL",
-               (unsigned long)failures);
-        printf("===================================\r\n");
-    }
-
-    /*
-     * Software-only address signature diagnostic.
-     * Write a unique value to each power-of-two half-word offset, then
-     * read all locations back after every write has completed.  This
-     * exposes aliasing/address-collapse without an oscilloscope.
-     */
-    {
-        static const uint32_t sig_offset[] = {
-            0x00000000U,
-            0x00000002U, 0x00000004U, 0x00000008U, 0x00000010U,
-            0x00000020U, 0x00000040U, 0x00000080U, 0x00000100U,
-            0x00000200U, 0x00000400U, 0x00000800U, 0x00001000U,
-            0x00002000U, 0x00004000U, 0x00008000U, 0x00010000U,
-            0x00020000U, 0x00040000U, 0x00080000U, 0x00100000U,
-            0x00200000U, 0x00400000U, 0x00800000U, 0x01000000U
-        };
-        uint32_t i;
-        uint32_t count = sizeof(sig_offset) / sizeof(sig_offset[0]);
-        uint32_t failures = 0U;
-        uint16_t expected;
-        uint16_t actual;
-
-        printf("\r\n=== SDRAM ADDRESS SIGNATURE TEST ===\r\n");
-
-        for(i = 0U; i < count; ++i) {
-            expected = (uint16_t)(0x6000U + i);
-            sdram_write16(sig_offset[i], expected);
-            __DSB();
-        }
-
-        for(i = 0U; i < count; ++i) {
-            expected = (uint16_t)(0x6000U + i);
-            actual = sdram_read16(sig_offset[i]);
-            printf("OFF=0x%08lX EXP=%04X READ=%04X : %s\r\n",
-                   (unsigned long)sig_offset[i],
-                   (unsigned int)expected,
-                   (unsigned int)actual,
-                   (actual == expected) ? "OK" : "FAIL");
-            if(actual != expected) {
-                ++failures;
-            }
-        }
-
-        printf("SIGNATURE RESULT : %s (%lu/%lu FAIL)\r\n",
-               (failures == 0U) ? "PASS" : "FAIL",
-               (unsigned long)failures,
-               (unsigned long)count);
-        printf("====================================\r\n");
-    }
-
-    /*
-     * Destructive full 32 MiB SDRAM test.
-     * Every 16-bit location is written and read for fixed patterns and
-     * address-dependent patterns.  The test stops at the first failure.
+     * Keep only the full 32 MiB destructive memory test.
+     * The earlier base/geometry/signature diagnostics were bring-up tools
+     * and are redundant now that the interface has passed validation.
      */
     if(sdram_full_memory_test() == 0U) {
         printf("\r\n*** FULL SDRAM TEST : PASS ***\r\n");
@@ -450,9 +267,8 @@ int main(void)
 
     while(1)
     {
-        /* Diagnostic complete. */
+        __WFI();
     }
-
 }
 
 /*!
@@ -461,54 +277,6 @@ int main(void)
     \param[out] none
     \retval     none
 */
-static uint32_t gpio_af_read(uint32_t gpio_periph, uint32_t pin)
-{
-    uint32_t index, shift;
-    for(index=0U; index<16U; ++index) {
-        if(pin==(1UL<<index)) {
-            if(index<8U) { shift=index*4U; return (GPIO_AFSEL0(gpio_periph)>>shift)&0xFU; }
-            shift=(index-8U)*4U; return (GPIO_AFSEL1(gpio_periph)>>shift)&0xFU;
-        }
-    }
-    return 0xFFFFFFFFU;
-}
-
-static void sdram_register_dump(void)
-{
-    static const uint32_t pf_pin[]={GPIO_PIN_0,GPIO_PIN_1,GPIO_PIN_2,GPIO_PIN_3,GPIO_PIN_4,GPIO_PIN_5,GPIO_PIN_12,GPIO_PIN_13,GPIO_PIN_14,GPIO_PIN_15};
-    static const uint32_t pf_num[]={0U,1U,2U,3U,4U,5U,12U,13U,14U,15U};
-    uint32_t i;
-    printf("\r\n=== EXMC REGISTER DUMP ===\r\n");
-    printf("SDCTL0 = 0x%08lX\r\n",(unsigned long)EXMC_SDCTL0);
-    printf("SDTCFG0= 0x%08lX\r\n",(unsigned long)EXMC_SDTCFG0);
-    printf("SDCMD  = 0x%08lX\r\n",(unsigned long)EXMC_SDCMD);
-    printf("SDARI  = 0x%08lX\r\n",(unsigned long)EXMC_SDARI);
-    printf("SDSTAT = 0x%08lX\r\n",(unsigned long)EXMC_SDSTAT);
-    printf("SDRSCTL= 0x%08lX\r\n",(unsigned long)EXMC_SDRSCTL);
-    printf("\r\n=== GPIO AF CHECK ===\r\n");
-    for(i=0U;i<10U;++i) printf("A%lu PF%lu AF=%lu\r\n",(unsigned long)i,(unsigned long)pf_num[i],(unsigned long)gpio_af_read(GPIOF,pf_pin[i]));
-    printf("A10 PG0 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_0));
-    printf("A11 PG1 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_1));
-    printf("A12 PG2 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_2));
-    printf("BA0 PG4 AF=%lu BA1 PG5 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_4),(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_5));
-    printf("RAS PF11 AF=%lu CAS PG15 AF=%lu WE PH5 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOF,GPIO_PIN_11),(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_15),(unsigned long)gpio_af_read(GPIOH,GPIO_PIN_5));
-    printf("CS PH3 AF=%lu CKE PH2 AF=%lu CLK PG8 AF=%lu\r\n",(unsigned long)gpio_af_read(GPIOH,GPIO_PIN_3),(unsigned long)gpio_af_read(GPIOH,GPIO_PIN_2),(unsigned long)gpio_af_read(GPIOG,GPIO_PIN_8));
-}
-
-static void sdram_base_stability_test(void)
-{
-    uint32_t i, failures=0U;
-    uint16_t value;
-    printf("\r\n=== SDRAM BASE STABILITY TEST ===\r\n");
-    for(i=0U;i<16U;++i) {
-        sdram_write16(0U,0x0000U); __DSB();
-        value=sdram_read16(0U); __DSB();
-        printf("%02lu WRITE=0000 READ=%04X : %s\r\n",(unsigned long)i,(unsigned int)value,(value==0U)?"OK":"FAIL");
-        if(value!=0U) ++failures;
-    }
-    printf("BASE STABILITY RESULT : %s (%lu/16 FAIL)\r\n",(failures==0U)?"PASS":"FAIL",(unsigned long)failures);
-}
-
 static void dbg_uart_init(void)
 {
     rcu_periph_clock_enable(RCU_GPIOD);
