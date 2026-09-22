@@ -43,9 +43,110 @@ OF SUCH DAMAGE.
 void cache_enable(void);
 void mpu_config(void);
 static void dbg_uart_init(void);
+static uint32_t sdram_full_memory_test(void)
+{
+    static const uint16_t fixed_pattern[] = {
+        0x0000U, 0xFFFFU, 0xAAAAU, 0x5555U
+    };
+    volatile uint16_t *mem = (volatile uint16_t *)SDRAM_BASE_ADDR;
+    const uint32_t words = SDRAM_SIZE_BYTES / 2U;
+    const uint32_t progress_words = (1U * 1024U * 1024U) / 2U; /* 1 MiB */
+    uint32_t p;
+    uint32_t i;
+    uint16_t expected;
+    uint16_t actual;
+
+    printf("\r\n=== FULL 32 MiB SDRAM TEST ===\r\n");
+    printf("WARNING: destructive test; entire SDRAM contents are overwritten.\r\n");
+
+    for(p = 0U; p < (sizeof(fixed_pattern) / sizeof(fixed_pattern[0])); ++p) {
+        printf("\r\nFIXED %04X : WRITE", (unsigned int)fixed_pattern[p]);
+        for(i = 0U; i < words; ++i) {
+            mem[i] = fixed_pattern[p];
+            if(((i + 1U) % progress_words) == 0U) {
+                printf(".");
+            }
+        }
+        __DSB();
+
+        printf(" VERIFY");
+        for(i = 0U; i < words; ++i) {
+            actual = mem[i];
+            if(actual != fixed_pattern[p]) {
+                printf("\r\nFAIL FIXED=%04X ADDR=0x%08lX EXP=%04X READ=%04X\r\n",
+                       (unsigned int)fixed_pattern[p],
+                       (unsigned long)(SDRAM_BASE_ADDR + (i * 2U)),
+                       (unsigned int)fixed_pattern[p],
+                       (unsigned int)actual);
+                return 1U;
+            }
+            if(((i + 1U) % progress_words) == 0U) {
+                printf(".");
+            }
+        }
+        printf(" PASS\r\n");
+    }
+
+    printf("\r\nADDRESS PATTERN : WRITE");
+    for(i = 0U; i < words; ++i) {
+        mem[i] = (uint16_t)(i ^ (i >> 16));
+        if(((i + 1U) % progress_words) == 0U) {
+            printf(".");
+        }
+    }
+    __DSB();
+
+    printf(" VERIFY");
+    for(i = 0U; i < words; ++i) {
+        expected = (uint16_t)(i ^ (i >> 16));
+        actual = mem[i];
+        if(actual != expected) {
+            printf("\r\nFAIL ADDRESS ADDR=0x%08lX EXP=%04X READ=%04X\r\n",
+                   (unsigned long)(SDRAM_BASE_ADDR + (i * 2U)),
+                   (unsigned int)expected,
+                   (unsigned int)actual);
+            return 2U;
+        }
+        if(((i + 1U) % progress_words) == 0U) {
+            printf(".");
+        }
+    }
+    printf(" PASS\r\n");
+
+    printf("\r\nINVERSE ADDRESS : WRITE");
+    for(i = 0U; i < words; ++i) {
+        mem[i] = (uint16_t)~(uint16_t)(i ^ (i >> 16));
+        if(((i + 1U) % progress_words) == 0U) {
+            printf(".");
+        }
+    }
+    __DSB();
+
+    printf(" VERIFY");
+    for(i = 0U; i < words; ++i) {
+        expected = (uint16_t)~(uint16_t)(i ^ (i >> 16));
+        actual = mem[i];
+        if(actual != expected) {
+            printf("\r\nFAIL INV_ADDR ADDR=0x%08lX EXP=%04X READ=%04X\r\n",
+                   (unsigned long)(SDRAM_BASE_ADDR + (i * 2U)),
+                   (unsigned int)expected,
+                   (unsigned int)actual);
+            return 3U;
+        }
+        if(((i + 1U) % progress_words) == 0U) {
+            printf(".");
+        }
+    }
+    printf(" PASS\r\n");
+    printf("FULL MEMORY RESULT : PASS\r\n");
+    printf("===============================\r\n");
+    return 0U;
+}
+
 static uint32_t gpio_af_read(uint32_t gpio_periph, uint32_t pin);
 static void sdram_register_dump(void);
 static void sdram_base_stability_test(void);
+static uint32_t sdram_full_memory_test(void);
 
 #define DBG_UART_BAUDRATE    115200U
 #define DBG_UART             USART1
@@ -259,6 +360,17 @@ int main(void)
                (unsigned long)failures,
                (unsigned long)count);
         printf("====================================\r\n");
+    }
+
+    /*
+     * Destructive full 32 MiB SDRAM test.
+     * Every 16-bit location is written and read for fixed patterns and
+     * address-dependent patterns.  The test stops at the first failure.
+     */
+    if(sdram_full_memory_test() == 0U) {
+        printf("\r\n*** FULL SDRAM TEST : PASS ***\r\n");
+    } else {
+        printf("\r\n*** FULL SDRAM TEST : FAIL ***\r\n");
     }
 
     while(1)
