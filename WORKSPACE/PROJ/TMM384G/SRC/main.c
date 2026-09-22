@@ -43,6 +43,77 @@ OF SUCH DAMAGE.
 void cache_enable(void);
 void mpu_config(void);
 static void dbg_uart_init(void);
+/*
+ * Reduce dynamic power by clock-gating peripherals that are not used by
+ * the current SDRAM validation firmware.  Keep EXMC, GPIOD/E/F/G/H and
+ * USART1 clocks available because SDRAM and DBG UART require them.
+ *
+ * This is clock gating, not removal of the MCU power rail.  Re-enable the
+ * corresponding RCU clock before a disabled peripheral is used later.
+ */
+static void unused_peripheral_clocks_disable(void)
+{
+    /* High-bandwidth / communication blocks. */
+    rcu_periph_clock_disable(RCU_DMA0);
+    rcu_periph_clock_disable(RCU_DMA1);
+    rcu_periph_clock_disable(RCU_DMAMUX);
+    rcu_periph_clock_disable(RCU_ENET0);
+    rcu_periph_clock_disable(RCU_ENET0TX);
+    rcu_periph_clock_disable(RCU_ENET0RX);
+    rcu_periph_clock_disable(RCU_ENET0PTP);
+    rcu_periph_clock_disable(RCU_ENET1);
+    rcu_periph_clock_disable(RCU_ENET1TX);
+    rcu_periph_clock_disable(RCU_ENET1RX);
+    rcu_periph_clock_disable(RCU_ENET1PTP);
+    rcu_periph_clock_disable(RCU_USBHS0);
+    rcu_periph_clock_disable(RCU_USBHS0ULPI);
+    rcu_periph_clock_disable(RCU_IPA);
+    rcu_periph_clock_disable(RCU_SDIO0);
+    rcu_periph_clock_disable(RCU_MDMA);
+    rcu_periph_clock_disable(RCU_OSPIM);
+    rcu_periph_clock_disable(RCU_OSPI0);
+    rcu_periph_clock_disable(RCU_OSPI1);
+
+    /* Timers not used by this test (SysTick is a CPU timer, not these). */
+    rcu_periph_clock_disable(RCU_TIMER0);
+    rcu_periph_clock_disable(RCU_TIMER1);
+    rcu_periph_clock_disable(RCU_TIMER2);
+    rcu_periph_clock_disable(RCU_TIMER3);
+    rcu_periph_clock_disable(RCU_TIMER4);
+    rcu_periph_clock_disable(RCU_TIMER5);
+    rcu_periph_clock_disable(RCU_TIMER6);
+    rcu_periph_clock_disable(RCU_TIMER7);
+    rcu_periph_clock_disable(RCU_TIMER22);
+    rcu_periph_clock_disable(RCU_TIMER23);
+    rcu_periph_clock_disable(RCU_TIMER30);
+    rcu_periph_clock_disable(RCU_TIMER31);
+    rcu_periph_clock_disable(RCU_TIMER50);
+    rcu_periph_clock_disable(RCU_TIMER51);
+
+    /* Serial / analog blocks not used by this test.  USART1 is retained. */
+    rcu_periph_clock_disable(RCU_SPI1);
+    rcu_periph_clock_disable(RCU_SPI2);
+    rcu_periph_clock_disable(RCU_I2C0);
+    rcu_periph_clock_disable(RCU_I2C1);
+    rcu_periph_clock_disable(RCU_I2C2);
+    rcu_periph_clock_disable(RCU_I2C3);
+    rcu_periph_clock_disable(RCU_USART0);
+    rcu_periph_clock_disable(RCU_USART2);
+    rcu_periph_clock_disable(RCU_USART5);
+    rcu_periph_clock_disable(RCU_UART3);
+    rcu_periph_clock_disable(RCU_UART4);
+    rcu_periph_clock_disable(RCU_UART6);
+    rcu_periph_clock_disable(RCU_UART7);
+    rcu_periph_clock_disable(RCU_ADC0);
+    rcu_periph_clock_disable(RCU_ADC1);
+    rcu_periph_clock_disable(RCU_DAC);
+    rcu_periph_clock_disable(RCU_CAN0);
+    rcu_periph_clock_disable(RCU_CAN1);
+    rcu_periph_clock_disable(RCU_CAN2);
+
+    printf("Unused peripheral clocks gated for low-power test.\r\n");
+}
+
 static uint32_t sdram_full_memory_test(void)
 {
     static const uint16_t fixed_pattern[] = {
@@ -146,6 +217,7 @@ static uint32_t sdram_full_memory_test(void)
 static uint32_t gpio_af_read(uint32_t gpio_periph, uint32_t pin);
 static void sdram_register_dump(void);
 static void sdram_base_stability_test(void);
+static void unused_peripheral_clocks_disable(void);
 static uint32_t sdram_full_memory_test(void);
 
 #define DBG_UART_BAUDRATE    115200U
@@ -173,6 +245,9 @@ int main(void)
     printf("\r\n\r\n=== TMM384G SDRAM TEST ===\r\n");
     printf("DBG UART : USART1 / PD5-TX PD6-RX / %lu baud\r\n",
            (unsigned long)DBG_UART_BAUDRATE);
+
+    /* Gate clocks to blocks not used by the current SDRAM test firmware. */
+    unused_peripheral_clocks_disable();
 
     /* initialize external SDRAM (MT48LC16M16A2B4-6A) */
     sdram_init();
